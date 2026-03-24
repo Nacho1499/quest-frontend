@@ -32,7 +32,7 @@ const NavBar = () => {
                     : "cursor-pointer hover:text-white transition-colors"
                 }
               >
-                Home
+               Home
               </NavLink>
               <NavLink
                 to="/store"
@@ -125,6 +125,9 @@ const NavBar = () => {
       {isOpen && (
         <div className="xl:hidden bg-[#323336] w-full px-10 pb-10 flex flex-col gap-6 absolute top-full left-0 z-50 border-t border-gray-800 shadow-2xl">
           <div className="flex flex-col text-base text-[#F9BC07] gap-6 pt-5">
+            <NavLink to="/" onClick={() => setIsOpen(false)}>
+              Home
+            </NavLink>
             <NavLink to="/store" onClick={() => setIsOpen(false)}>
               Store
             </NavLink>

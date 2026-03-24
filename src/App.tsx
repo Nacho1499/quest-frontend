@@ -1,24 +1,48 @@
-import { Routes, Route, useLocation } from "react-router-dom"; // ✅ import useLocation
-import NavBar from "./components/Navbar";
+import { Routes, Route, useLocation } from "react-router-dom";
+import HeroSection from "./components/HeroSection";
+import "./App.css";
+import FaqsSection from "./components/FaqsSection";
+import ContributorsSection from "./components/ContributorsSection";
+import AboutUsSection from "./components/AboutUsSection";
+import SignIn from "./pages/auth/SignIn";
+import AccountSettings from "./components/AccountSettings";
+import WhyShouldYouPlaySection from "./components/why-should-you-play-section";
+import GameModeSection from "./components/GameMode/GameModeSection";
+import Footer from "./components/Footer";
+import { RecentActivity } from "./components/RecentActivity";
+import { mockActivities } from "./models/recentActivity";
+import LeaderboardPage from "./pages/LeaderboardPage";
+import HowToPlay from "./components/HowToPlay";
+import { GetStarted } from "./pages/GetStarted";
+import Navbar from "./components/Navbar";
 
-import Home from "./pages/Home";
-import Store from "./pages/Store";
-import GameMode from "./pages/GameMode";
-import Settings from "./pages/Settings";
+const Home = () => (
+  <>
+    <HeroSection />
+    <HowToPlay />
+    <WhyShouldYouPlaySection />
+    <AboutUsSection />
+    <ContributorsSection />
+    <FaqsSection />
+    <GameModeSection />
+    <RecentActivity activities={mockActivities} />
+    <Footer />
+  </>
+);
 
 function App() {
   const location = useLocation();
-  const showNavBar = location.pathname !== '/sign-in';
+  const showNavBar = location.pathname !== "/sign-in";
 
   return (
     <>
-      {showNavBar && <NavBar />}  {/* ✅ only show NavBar if not on /sign-in */}
-
+      {showNavBar && <Navbar />}  {/* Only show Navbar when NOT on /sign-in */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/game-mode" element={<GameMode />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/settings" element={<AccountSettings />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
+        <Route path="/get-started" element={<GetStarted />} />
       </Routes>
     </>
   );

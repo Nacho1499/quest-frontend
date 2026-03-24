@@ -30,3 +30,153 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+/* Thin, subtle scrollbar — Figma-friendly */
+.scrollbar-thin {
+  scrollbar-width: thin; /* Firefox */
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(234, 179, 8, 0.4); /* yellow-500 */
+  border-radius: 9999px;
+}
+
+/* Arrow-shaped button */
+.arrow-button {
+  position: relative;
+  clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}
+
+/* For better browser support, use pseudo-elements */
+.arrow-button-alt {
+  position: relative;
+}
+
+.arrow-button-alt::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: inherit;
+  clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
+}
+
+.arrow-button-alt::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: inherit;
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.text-modal {
+  background: linear-gradient(
+    0deg,
+    #19284e -21.43%,
+    #fdd405 0.83%,
+    #ee2b22 94.86%,
+    #f9bc07 116.4%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- KEYFRAMES  GameplayModal---------- */
+
+@keyframes overlay-show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes content-show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.alert-overlay-modal {
+  background: rgba(33, 31, 31, 0.7);
+  animation: overlay-show 150ms ease-out forwards;
+}
+
+.alert-content-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  animation: content-show 150ms ease-out forwards;
+}
+
+/* ---------- KEYFRAMES Contributors Section ---------- */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(202, 138, 4, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(202, 138, 4, 0.4);
+  }
+}
+
+.contributor-card-hover:hover {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.contributor-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.contributor-float:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.contributor-float:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.contributor-float:nth-child(4) {
+  animation-delay: 1.5s;
+}

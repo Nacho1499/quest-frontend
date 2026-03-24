@@ -7,6 +7,9 @@ import GameMode from "./pages/GameMode"
 import Settings from "./pages/Settings"
 
 function App() {
+  const location = useLocation();
+  const showNavBar = location.pathname !== '/sign-in';
+
   return (
     <>
       <NavBar />
